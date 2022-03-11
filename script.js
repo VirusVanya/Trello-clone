@@ -120,8 +120,7 @@ window.onclick = function(event) {
 
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
+for (var i = 0; i < myNodelist.length; i++) {
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
   span.className = "close";
@@ -165,6 +164,10 @@ function newElement() {
   task.innerHTML = '<h1 class="taskTitle">' + titleInput + '</h1><p class="taskDescr">' + descrInput + '</p><p class="taskDate">' + dateInput + '</p>';
   backBtn.innerHTML = "<button>Back</button>";
 
+  task.id = titleInput;
+  task.className = "taskDoc";
+  li.className = titleInput;
+
   task.style.position = "absolute";
   task.style.top = 85 + "px";
   backBtn.style.position = "relative";
@@ -176,129 +179,44 @@ function newElement() {
     switch (number) {
       case 1:
         document.getElementById("myUL1").appendChild(li);
-        document.getElementById("taskDoc1").appendChild(task);
-        document.getElementById("taskDoc1").appendChild(backBtn);
-        
-        for (var i = 0; i <= 4; i++) {
-          list[i].addEventListener('click', function(ev) {
-            if (ev.target.tagName === 'LI') {
-              for (var j = 0; j<=4; j++) {
-                document.getElementsByClassName("Block")[j].style.display = "none";
-              }
-              document.getElementById("taskDoc1").style.display = "block";
-            }
-          }, false);
-        }
-
-        backBtn.addEventListener('click', mainPage)
-
-        function mainPage() {
-          for (var i = 0; i<=4; i++) {
-            document.getElementsByClassName("Block")[i].style.display = "block";
-          }
-          document.getElementById("Documentation").style.display = "none";
-        }
         break;
       case 2:
         document.getElementById("myUL2").appendChild(li);
-        document.getElementById("taskDoc2").appendChild(task);
-        document.getElementById("taskDoc2").appendChild(backBtn);
-        
-        for (var i = 0; i <= 4; i++) {
-          list[i].addEventListener('click', function(ev) {
-            if (ev.target.tagName === 'LI') {
-              for (var j = 0; j<=4; j++) {
-                document.getElementsByClassName("Block")[j].style.display = "none";
-              }
-              document.getElementById("taskDoc2").style.display = "block";
-            }
-          }, false);
-        }
-
-        backBtn.addEventListener('click', mainPage)
-
-        function mainPage() {
-          for (var i = 0; i<=4; i++) {
-            document.getElementsByClassName("Block")[i].style.display = "block";
-          }
-          document.getElementById("Documentation").style.display = "none";
-        }
         break;
       case 3:
         document.getElementById("myUL3").appendChild(li);
-        document.getElementById("taskDoc3").appendChild(task);
-        document.getElementById("taskDoc3").appendChild(backBtn);
-        
-        for (var i = 0; i <= 4; i++) {
-          list[i].addEventListener('click', function(ev) {
-            if (ev.target.tagName === 'LI') {
-              for (var j = 0; j<=4; j++) {
-                document.getElementsByClassName("Block")[j].style.display = "none";
-              }
-              document.getElementById("taskDoc3").style.display = "block";
-            }
-          }, false);
-        }
-
-        backBtn.addEventListener('click', mainPage)
-
-        function mainPage() {
-          for (var i = 0; i<=4; i++) {
-            document.getElementsByClassName("Block")[i].style.display = "block";
-          }
-          document.getElementById("Documentation").style.display = "none";
-        }
         break;
       case 4:
         document.getElementById("myUL4").appendChild(li);
-        document.getElementById("taskDoc4").appendChild(task);
-        document.getElementById("taskDoc4").appendChild(backBtn);
-        
-        for (var i = 0; i <= 4; i++) {
-          list[i].addEventListener('click', function(ev) {
-            if (ev.target.tagName === 'LI') {
-              for (var j = 0; j<=4; j++) {
-                document.getElementsByClassName("Block")[j].style.display = "none";
-              }
-              document.getElementById("taskDoc4").style.display = "block";
-            }
-          }, false);
-        }
-
-        backBtn.addEventListener('click', mainPage)
-
-        function mainPage() {
-          for (var i = 0; i<=4; i++) {
-            document.getElementsByClassName("Block")[i].style.display = "block";
-          }
-          document.getElementById("Documentation").style.display = "none";
-        }
         break;
       case 5:
         document.getElementById("myUL5").appendChild(li);
-        document.getElementById("taskDoc5").appendChild(task);
-        document.getElementById("taskDoc5").appendChild(backBtn);
-        
-        for (var i = 0; i <= 4; i++) {
-          list[i].addEventListener('click', function(ev) {
-            if (ev.target.tagName === 'LI') {
-              for (var j = 0; j<=4; j++) {
-                document.getElementsByClassName("Block")[j].style.display = "none";
-              }
-              document.getElementById("taskDoc5").style.display = "block";
-            }
-          }, false);
-        }
-
-        backBtn.addEventListener('click', mainPage)
-
-        function mainPage() {
-          for (var i = 0; i<=4; i++) {
-            document.getElementsByClassName("Block")[i].style.display = "block";
-          }
-          document.getElementById("Documentation").style.display = "none";
-        }
         break;
+    }
+    task.appendChild(backBtn);
+    document.getElementById("Documentation").appendChild(task);
+
+    var searchId;
+
+    for (var i = 0; i <= 4; i++) {
+      list[i].addEventListener('click', function(ev) {
+        if (ev.target.tagName === 'LI') {
+          searchId = ev.target.className;
+          for (var j = 0; j<=4; j++) {
+            document.getElementsByClassName("Block")[j].style.display = "none";
+          }
+          document.getElementById(searchId).style.display = "block";
+        }
+      }, false);
+    }
+
+    backBtn.addEventListener('click', mainPage)
+
+    function mainPage() {
+      for (var i = 0; i<=4; i++) {
+        document.getElementsByClassName("Block")[i].style.display = "block";
+      }
+      document.getElementById(searchId).style.display = "none";
     }
   }
   document.getElementById("newTitle").value = "";

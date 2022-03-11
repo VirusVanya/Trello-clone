@@ -459,23 +459,7 @@ a {
 	margin-bottom: 50px;
 }
 
-#taskDoc1 {
-  	display: none;
-}
-
-#taskDoc2 {
-  	display: none;
-}
-
-#taskDoc3 {
-  	display: none;
-}
-
-#taskDoc4 {
-  	display: none;
-}
-
-#taskDoc5 {
+#Documentation .taskDoc{
   	display: none;
 }
 
