@@ -1,0 +1,497 @@
+body {
+	background: linear-gradient(180deg,#090979,#1050d6,#00a4ff);
+	height: 1000px;
+	margin: 0;
+	padding: 0;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 25px;
+	letter-spacing: 2px;
+	word-spacing: 2px;
+	color: #000000;
+	font-weight: 400;
+	text-decoration: none;
+	font-style: normal;
+	font-variant: normal;
+	text-transform: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.MainMenu {
+	position: fixed;
+	width: 100%;
+	height: 70px;
+	background: #333333;
+	justify-content: space-between;
+	display: flex;
+	z-index: 1;
+}
+
+#name {
+	position: absolute;
+	left: 5%;
+	top: -5px;
+}
+
+#option {
+	position: relative;
+	height: 100%;
+	width: 130px;
+	left: 15%;
+	transition: 0.4s;
+	font-size: 24px;
+}
+
+#option p {
+	text-align: center;
+}
+
+.general {
+	position: relative;
+	height: 80%;
+	width: 40%;
+	display: flex;
+	top: 10%;
+	justify-content: space-around;
+}
+
+.general span {
+	position: relative;
+  	padding: 10px;
+  	width: 100px;
+  	background: #333333;
+  	padding-top: 12px;
+  	float: left;
+  	text-align: center;
+  	font-size: 24px;
+  	cursor: pointer;
+  	transition: 0.4s;
+  	border-radius: 40px;
+}
+
+.general span:hover {
+	background-color: #386dff;
+}
+
+#mainop {
+	position: relative;
+	top: -5px;
+}
+
+.dropdown-content {
+	display: none;
+    position: absolute;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+    top: 45px;
+    left: -40px;
+}
+
+#option:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown-content div{
+	position: relative;
+	width: 130px;
+	height: 70px;
+	background: #333333;
+	transition: 0.4s;
+}
+
+.dropdown-content div:hover {
+	background-color: #386dff;
+}
+
+#option:hover {
+	background-color: #386dff;
+}
+
+.dropdown-content a {
+	position: relative;
+	top: 25%;
+}
+
+#secop {
+	border-radius: 10% 10% 15% 15% / 0% 0% 30% 30%;
+}
+
+.Block {
+	position: absolute;
+	width: 19%;
+	background: grey;
+	border-radius: 15px;
+	top: 85px;
+	left: 0.5%;
+}
+
+.ToDo {
+	left: 20.5%;
+}
+
+.Progress {
+	left: 40.5%;
+}
+
+.Ready {
+	left: 60.5%;
+}
+
+.Launched {
+	left: 80.5%;
+}
+
+.taskList {
+	list-style: none;
+}
+
+.Title {
+	position: relative;
+	width: 100%;
+	height: 40px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.Title p{
+	position: relative;
+	top: -15px;
+	left: 10px;
+	font-size: 22px;
+}
+
+.AddCard {
+	position: relative;
+	width: 100%;
+	height: 40px;
+	display: flex;
+}
+
+.AddCard p{
+	position: relative;
+	top: -13px;
+	left: 15px;
+	font-size: 20px;
+}
+
+.MoreBtn {
+	position: relative;
+	top: 10px;
+	right: 10px;
+	color: #3b3b3b;
+	font-size: 20px;
+	transition: 0.4s;
+}
+
+.MoreBtn:hover {
+	color: #386dff;
+	cursor: pointer;
+}
+
+.Plus {
+	position: relative;
+	color: #3b3b3b;
+	font-size: 20px;
+	bottom: -5px;
+	left: 10px;
+	transition: 0.4s;
+}
+
+.Plus:hover {
+	color: #386dff;
+	cursor: pointer;
+}
+
+/* Modal window */
+
+.Modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+	border-radius: 20px;
+	background-color: #636363;
+	margin: 15% auto;
+	padding: 20px;
+	border: 2px solid black;
+	width: 30%;
+}
+
+.modal-content h2{
+	text-align: center;
+}
+
+.CloseModal {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	transition: 0.4s;
+}
+
+.CloseModal:hover, .CloseModal:focus {
+	color: red;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.Input {
+	border-radius: 30px;
+	height: 25px;
+	font-size: 18px;
+}
+
+/* Colorful Tags */
+
+/* Hide checkbox */
+.Tags input[type="checkbox"] {
+	display: none;
+}
+
+/* Styles for label */
+.Tags label {
+	cursor: pointer;
+	line-height: 30px;
+	padding: 10px 0;
+}
+
+.Tags {
+	width: 100%;
+	display: flex;
+	position: relative;
+	justify-content: space-around;
+	top: 10px;
+	margin-bottom: 50px;
+}
+
+/* Make checkbox with before */
+
+.Red label:before {
+	content: " ";
+	display: inline-block;
+	margin-right: 15px;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;
+	background: red;
+	border: 2px outset red;
+}
+
+/* Checked */
+.Red input:checked + label:before {
+	border: 2px outset black;
+}
+/* Disabled */
+.Red input:disabled + label:before {
+	border: 2px outset red;
+}
+
+.Green label:before {
+	content: " ";
+	display: inline-block;
+	margin-right: 15px;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;
+	background: green;
+	border: 2px outset green;
+}
+
+/* Checked */
+.Green input:checked + label:before {
+	border: 2px outset black;
+}
+/* Disabled */
+.Green input:disabled + label:before {
+	border: 2px outset green;
+}
+
+.Yellow label:before {
+	content: " ";
+	display: inline-block;
+	margin-right: 15px;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;
+	background: yellow;
+	border: 2px outset yellow;
+}
+
+/* Checked */
+.Yellow input:checked + label:before {
+	border: 2px outset black;
+}
+/* Disabled */
+.Yellow input:disabled + label:before {
+	border: 2px outset yellow;
+}
+
+.Blue label:before {
+	content: " ";
+	display: inline-block;
+	margin-right: 15px;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;
+	background: blue;
+	border: 2px outset blue;
+}
+
+/* Checked */
+.Blue input:checked + label:before {
+	border: 2px outset black;
+}
+/* Disabled */
+.Blue input:disabled + label:before {
+	border: 2px outset blue;
+}
+
+.actBtn {
+	position: relative;
+	left: 36%;
+	top: -35px;
+  	padding: 10px;
+  	width: 100px;
+  	background: #333333;
+  	float: left;
+  	text-align: center;
+  	font-size: 20px;
+  	cursor: pointer;
+  	transition: 0.4s;
+  	border-radius: 40px;
+}
+
+.actBtn:hover {
+  	background-color: #386dff;
+}
+
+/* Include the padding and border in an element's total width and height */
+.Block * {
+  	box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+.Block ul {
+  	margin: 0;
+  	padding: 0;
+}
+
+/* Style the list items */
+.Block ul li {
+  	cursor: pointer;
+ 	position: relative;
+  	padding: 12px 8px 12px 40px;
+  	background: #eee;
+  	font-size: 18px;
+  	transition: 0.2s;
+
+  	/* make the list items unselectable */
+  	-webkit-user-select: none;
+  	-moz-user-select: none;
+  	-ms-user-select: none;
+  	user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+.Block ul li:nth-child(odd) {
+  	background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+.Block ul li:hover {
+  	background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+.Block ul li.checked {
+  	background: #888;
+  	color: #fff;
+  	text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+.Block ul li.checked::before {
+  	content: '';
+  	position: absolute;
+  	border-color: #fff;
+  	border-style: solid;
+  	border-width: 0 2px 2px 0;
+  	top: 10px;
+  	left: 16px;
+  	transform: rotate(45deg);
+  	height: 15px;
+  	width: 7px;
+}
+
+/* Style the close button */
+.close {
+  	position: absolute;
+  	right: 0;
+  	top: 0;
+  	padding: 11px 16px 11px 16px;
+  	font-size: 20px;
+  	transition: 0.4s;
+}
+
+.close:hover {
+  	background-color: #f44336;
+  	color: white;
+}
+
+#nameForBoard {
+	margin-bottom: 50px;
+}
+
+#taskDoc1 {
+  	display: none;
+}
+
+#taskDoc2 {
+  	display: none;
+}
+
+#taskDoc3 {
+  	display: none;
+}
+
+#taskDoc4 {
+  	display: none;
+}
+
+#taskDoc5 {
+  	display: none;
+}
+
+.taskTitle {
+  	text-align: center;
+  	font-size: 40px;
+}
+
+.taskDescr {
+  	position: relative;
+  	left: 40%;
+  	width: 200px;
+  	font-size: 24px;
+}
+
+.taskDate {
+  	position: relative;
+  	left: 50%;
+}

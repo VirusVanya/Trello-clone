@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<title>Trello</title>
+</head>
+<body>
+	<div class="MainMenu">
+		<div id="name"><p>New board</p></div>
+		<div id="option">
+			<p id="mainop">Board</p>
+			<ul class="dropdown-content">
+				<div id="firop"><a href="#">Board</a></div>
+				<div id="secop"><a href="#">Calendar</a></div>
+			</ul>
+		</div>
+		<div class="general">
+			<span id="users">Users</span>
+			<span id="board">Board</span>
+			<span id="filter">Filter</span>
+			<span id="settings">Settings</span>
+		</div>
+	</div>
+	<div class="Block HelpfulInfo">
+		<div class="Title">
+			<p>Helpful Launch Info</p>
+			<b class="MoreBtn">···</b>
+		</div>
+		<ul id="myUL1" class="taskList"></ul>
+		<div class="AddCard">
+			<b class="Plus" value="1">+</b>
+			<p>Add another card</p>
+		</div>
+	</div>
+
+	<div class="Block ToDo">
+		<div class="Title">
+			<p>To Do</p>
+			<b class="MoreBtn">···</b>
+		</div>
+		<ul id="myUL2" class="taskList"></ul>
+		<div class="AddCard">
+			<b class="Plus" value="2">+</b>
+			<p>Add another card</p>
+		</div>
+	</div>
+
+	<div class="Block Progress">
+		<div class="Title">
+			<p>In Progress</p>
+			<b class="MoreBtn">···</b>
+		</div>
+		<ul id="myUL3" class="taskList"></ul>
+		<div class="AddCard">
+			<b class="Plus" value="3">+</b>
+			<p>Add another card</p>
+		</div>
+	</div>
+
+	<div class="Block Ready">
+		<div class="Title">
+			<p>Ready For Launch</p>
+			<b class="MoreBtn">···</b>
+		</div>
+		<ul id="myUL4" class="taskList"></ul>
+		<div class="AddCard">
+			<b class="Plus" value="4">+</b>
+			<p>Add another card</p>
+		</div>
+	</div>
+
+	<div class="Block Launched">
+		<div class="Title">
+			<p>Launched</p>
+			<b class="MoreBtn">···</b>
+		</div>
+		<ul id="myUL5" class="taskList"></ul>
+		<div class="AddCard">
+			<b class="Plus" value="5">+</b>
+			<p>Add another card</p>
+		</div>
+	</div>
+	<div id="modalUsers" class="Modal">
+	  	<div class="modal-content">
+		    <span class="CloseModal">&times;</span>
+		    <h2>Users</h2>
+	  	</div>
+	</div>
+	<div id="modalBoard" class="Modal">
+	  	<div class="modal-content">
+		    <span class="CloseModal">&times;</span>
+		    <h2>New Board</h2>
+		    <div>
+		    	<label for="nameBoard">Name:</label>
+		    	<input type="text" name="nameBoard" placeholder="Enter a name here" class="Input" id="nameForBoard">
+		    </div>
+		    <span class="actBtn" id="nameBtn">Create</span>
+	  	</div>
+	</div>
+	<div id="modalFilter" class="Modal">
+	  	<div class="modal-content">
+		    <span class="CloseModal">&times;</span>
+		    <h2>Filter</h2>
+		    <div class="Tags">
+		    	<div class="Red">
+		    		<input type="checkbox" id="redinp1">
+					<label for="redinp1"></label>
+		    	</div>
+				<div class="Green">
+					<input type="checkbox" id="greeninp1">
+					<label for="greeninp1"></label>
+				</div>
+				<div class="Yellow">
+					<input type="checkbox" id="yellowinp1">
+					<label for="yellowinp1"></label>
+				</div>
+				<div class="Blue">
+					<input type="checkbox" id="blueinp1">
+					<label for="blueinp1"></label>
+				</div>
+		    </div>
+		    <span class="actBtn">Filter</span>
+	  	</div>
+	</div>
+	<div id="modalSettings" class="Modal">
+	  	<div class="modal-content">
+		    <span class="CloseModal">&times;</span>
+		    <h2>Settings</h2>
+		    <div>
+		    	<label for="addTag">Add new tag:</label>
+		    	<input type="text" name="addTag" placeholder="Enter a color of tag here" class="Input">
+		    </div>
+		    <div>
+		    	<label for="changeBack">Change background:</label>
+		    	<input type="file" name="changeBack" accept="image/*" class="Input">
+		    </div>
+
+	  	</div>
+	</div>
+	<div id="modalAdd" class="Modal">
+	  	<div class="modal-content">
+		    <span class="CloseModal">&times;</span>
+		    <h2>Add Task</h2>
+		    <form>
+		    	<div>
+		    		<label for="titleTask">Title:</label>
+		    		<input type="text" name="titleTask" placeholder="Enter a title here" class="Input" id="newTitle">
+		    	</div>
+		    	<div>
+		    		<label for="dateTask">Expired date:</label>
+		    		<input type="date" name="dateTask" class="Input" id="newDate">
+		    	</div>
+		    	<div>
+		    		<label for="descrTask">Description:</label>
+		    		<input type="text" name="descrTask" placeholder="Enter a description here" class="Input" id="newDescr">
+		    	</div>
+		    	<div class="Tags">
+		    		<div class="Red">
+		    			<input type="checkbox" id="redinp2">
+						<label for="redinp2"></label>
+		    		</div>
+					<div class="Green">
+						<input type="checkbox" id="greeninp2">
+						<label for="greeninp2"></label>
+					</div>
+					<div class="Yellow">
+						<input type="checkbox" id="yellowinp2">
+						<label for="yellowinp2"></label>
+					</div>
+					<div class="Blue">
+						<input type="checkbox" id="blueinp2">
+						<label for="blueinp2"></label>
+					</div>
+		    	</div>
+		    	<span onclick="newElement()" class="actBtn">Add</span>
+		    </form>
+	  	</div>
+	</div>
+	<div id="Documentation">
+		<div id="taskDoc1"></div>
+		<div id="taskDoc2"></div>
+		<div id="taskDoc3"></div>
+		<div id="taskDoc4"></div>
+		<div id="taskDoc5"></div>
+	</div>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
