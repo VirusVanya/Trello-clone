@@ -130,8 +130,7 @@ for (var i = 0; i < myNodelist.length; i++) {
 
 // Click on a close button to hide the current list item
 var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
+for (var i = 0; i < close.length; i++) {
   close[i].onclick = function() {
     var div = this.parentElement;
     div.style.display = "none";
@@ -161,8 +160,8 @@ function newElement() {
   var backBtn = document.createElement("div");
 
   li.appendChild(t);
-  task.innerHTML = '<h1 class="taskTitle">' + titleInput + '</h1><p class="taskDescr">' + descrInput + '</p><p class="taskDate">' + dateInput + '</p>';
-  backBtn.innerHTML = "<button>Back</button>";
+  task.innerHTML = '<h1 class="taskTitle">' + titleInput + '</h1><p class="taskDescr">' + descrInput + '</p><div id="pass"><input type="file" name="" class="Input"><span class="passBtn" id="' + titleInput + 'Span">Pass</span><p class="taskDate">Deadline: ' + dateInput +' </p></div>';
+  backBtn.innerHTML = '<span id="toMainpage">🠔</span>';
 
   task.id = titleInput;
   task.className = "taskDoc";
@@ -218,10 +217,15 @@ function newElement() {
       }
       document.getElementById(searchId).style.display = "none";
     }
+
+    /*document.getElementById(titleInput + "Span").addEventListener('click', function() {
+      document.getElementsByClassName(titleInput)[0].style.background = "green";
+    }, false);*/
+
+    document.getElementById("newTitle").value = "";
+    document.getElementById("newDate").value = "";
+    document.getElementById("newDescr").value = "";
   }
-  document.getElementById("newTitle").value = "";
-  document.getElementById("newDate").value = "";
-  document.getElementById("newDescr").value = "";
 
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
