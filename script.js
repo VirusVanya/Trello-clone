@@ -133,44 +133,66 @@ var close = document.getElementsByClassName("close");
 for (var i = 0; i < close.length; i++) {
   close[i].onclick = function() {
     var div = this.parentElement;
-    div.style.display = "none";
+    div.remove();
   }
 }
 
-// Add a "checked" symbol when clicking on a list item
 var list = document.getElementsByClassName('taskList');
-/*for (var i = 0; i <= 4; i++) {
-	list[i].addEventListener('click', function(ev) {
-  	if (ev.target.tagName === 'LI') {
-    	ev.target.classList.toggle('checked');
-  	}
-	}, false);
-}*/
+var tags = ["red","green","yellow","blue"];
+
+// Filter the list items by the tags
+function filter() {
+  var inputTags = document.getElementsByClassName("inputTagsFilter");
+  var taskId = "";
+
+  for (var i = 0; i < inputTags.length; i++) {
+    if (inputTags[i].checked == true) {
+      taskId += tags[i];
+    }
+  }
+
+  var findList = document.getElementsByTagName("LI");
+  for (var i = 0; i < findList.length; i++) {
+    findList[i].style.display = "none";
+    if (findList[i].id.indexOf(taskId) != -1) {
+      findList[i].style.display = "block";
+    }
+  }
+}
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
   var titleInput = document.getElementById("newTitle").value;
   var dateInput = document.getElementById("newDate").value;
   var descrInput = document.getElementById("newDescr").value;
+  var inputTags = document.getElementsByClassName("inputTagsAdd");
   
   var t = document.createTextNode(titleInput);
-  
+
   var li = document.createElement("li");
   var task = document.createElement("div");
   var backBtn = document.createElement("div");
+  var taskTags = document.createElement("div");
 
   li.appendChild(t);
-  task.innerHTML = '<h1 class="taskTitle">' + titleInput + '</h1><p class="taskDescr">' + descrInput + '</p><div id="pass"><input type="file" name="" class="Input"><span class="passBtn" id="' + titleInput + 'Span">Pass</span><p class="taskDate">Deadline: ' + dateInput +' </p></div>';
   backBtn.innerHTML = '<span id="toMainpage">🠔</span>';
+  
+  var taskId = "";
 
-  task.id = titleInput;
-  task.className = "taskDoc";
-  li.className = titleInput;
+  for (var i = 0; i < inputTags.length; i++) {
+    if (inputTags[i].checked == true) {
+      taskTags.innerHTML += '<div class="" style="background: ' + tags[i] + ';"></div>';
+      taskId += tags[i];
+    }
+  }
+
+  task.innerHTML = '<h1 class="taskTitle">' + titleInput + '</h1><p class="taskDescr">' + descrInput + '</p><div id="pass"><input type="file" name="" class="Input filesPass"><span class="passBtn" id="' + titleInput + 'Pass">Pass</span><span class="passBtn" id="' + titleInput + 'Cancel">Cancel</span><div class="tagsForThisTask">' + taskTags.innerHTML + '</div><p class="taskDate">Deadline: ' + dateInput +' </p></div>';
+
+  task.className = "taskDoc " + titleInput + " " + taskId;
+  li.id = titleInput + " " + taskId;
 
   task.style.position = "absolute";
   task.style.top = 85 + "px";
-  backBtn.style.position = "relative";
-  backBtn.style.top = 85 + "px";
 
   if ((titleInput === '') || (dateInput === '') || (descrInput === '')) {
     alert("All the fields must be filled!");
@@ -195,16 +217,18 @@ function newElement() {
     task.appendChild(backBtn);
     document.getElementById("Documentation").appendChild(task);
 
+    document.getElementById(titleInput + "Pass").style.display = "block";
+
     var searchId;
 
     for (var i = 0; i <= 4; i++) {
       list[i].addEventListener('click', function(ev) {
         if (ev.target.tagName === 'LI') {
-          searchId = ev.target.className;
+          searchId = ev.target.id;
           for (var j = 0; j<=4; j++) {
             document.getElementsByClassName("Block")[j].style.display = "none";
           }
-          document.getElementById(searchId).style.display = "block";
+          document.getElementsByClassName(searchId)[0].style.display = "block";
         }
       }, false);
     }
@@ -215,12 +239,20 @@ function newElement() {
       for (var i = 0; i<=4; i++) {
         document.getElementsByClassName("Block")[i].style.display = "block";
       }
-      document.getElementById(searchId).style.display = "none";
+      document.getElementsByClassName(searchId)[0].style.display = "none";
     }
 
-    /*document.getElementById(titleInput + "Span").addEventListener('click', function() {
-      document.getElementsByClassName(titleInput)[0].style.background = "green";
-    }, false);*/
+    document.getElementById(titleInput + "Pass").addEventListener('click', function() {
+      document.getElementById(searchId).className = "checked";
+      document.getElementById(titleInput + "Pass").style.display = "none";
+      document.getElementById(titleInput + "Cancel").style.display = "block";
+    });
+
+    document.getElementById(titleInput + "Cancel").addEventListener('click', function() {
+      document.getElementById(searchId).className = '';
+      document.getElementById(titleInput + "Cancel").style.display = "none";
+      document.getElementById(titleInput + "Pass").style.display = "block";
+    });
 
     document.getElementById("newTitle").value = "";
     document.getElementById("newDate").value = "";
@@ -257,169 +289,3 @@ function changeName() {
   }
   boardNameInput.value = "";
 }
-
-/*
-function newElement() {
-  var titleInput = document.getElementById("newTitle").value;
-  var dateInput = document.getElementById("newDate").value;
-  var descrInput = document.getElementById("newDescr").value;
-  
-  var t = document.createTextNode(titleInput);
-  
-  var li = document.createElement("li");
-  var task = document.createElement("div");
-  var backBtn = document.createElement("div");
-
-  li.appendChild(t);
-  task.innerHTML = '<h1 class="taskTitle">' + titleInput + '</h1><p class="taskDescr">' + descrInput + '</p><p class="taskDate">' + dateInput + '</p>';
-  backBtn.innerHTML = "<button>Back</button>";
-  if ((titleInput === '') || (dateInput === '') || (descrInput === '')) {
-    alert("All the fields must be filled!");
-  } else {
-    switch (number) {
-      case 1:
-        document.getElementById("myUL1").appendChild(li);
-        document.getElementById("taskDoc1").appendChild(backBtn);
-        document.getElementById("taskDoc1").appendChild(task);
-        
-        list.addEventListener('click', function(ev) {
-          if (ev.target.tagName === 'LI') {
-            var i;
-            for (i = 0; i<=4; i++) {
-              document.getElementsByClassName("Block")[i].style.display = "none";
-            }
-            document.getElementById("taskDoc1").style.display = "block";
-          }
-        }, false);
-
-        backBtn.addEventListener('click', mainPage)
-
-        function mainPage() {
-          var i;
-          for (i = 0; i<=4; i++) {
-            document.getElementsByClassName("Block")[i].style.display = "block";
-          }
-          document.getElementById("taskDoc1").style.display = "none";
-        }
-        break;
-      case 2:
-        document.getElementById("myUL2").appendChild(li);
-        document.getElementById("taskDoc2").appendChild(backBtn);
-        document.getElementById("taskDoc2").appendChild(task);
-        
-        list.addEventListener('click', function(ev) {
-          if (ev.target.tagName === 'LI') {
-            var i;
-            for (i = 0; i<=4; i++) {
-              document.getElementsByClassName("Block")[i].style.display = "none";
-            }
-            document.getElementById("taskDoc2").style.display = "block";
-          }
-        }, false);
-
-        backBtn.addEventListener('click', mainPage)
-
-        function mainPage() {
-          var i;
-          for (i = 0; i<=4; i++) {
-            document.getElementsByClassName("Block")[i].style.display = "block";
-          }
-          document.getElementById("taskDoc2").style.display = "none";
-        }
-        break;
-      case 3:
-        document.getElementById("myUL3").appendChild(li);
-        document.getElementById("taskDoc3").appendChild(backBtn);
-        document.getElementById("taskDoc3").appendChild(task);
-        
-        list.addEventListener('click', function(ev) {
-          if (ev.target.tagName === 'LI') {
-            var i;
-            for (i = 0; i<=4; i++) {
-              document.getElementsByClassName("Block")[i].style.display = "none";
-            }
-            document.getElementById("taskDoc3").style.display = "block";
-          }
-        }, false);
-
-        backBtn.addEventListener('click', mainPage)
-
-        function mainPage() {
-          var i;
-          for (i = 0; i<=4; i++) {
-            document.getElementsByClassName("Block")[i].style.display = "block";
-          }
-          document.getElementById("taskDoc3").style.display = "none";
-        }
-        break;
-      case 4:
-        document.getElementById("myUL4").appendChild(li);
-        document.getElementById("taskDoc4").appendChild(backBtn);
-        document.getElementById("taskDoc4").appendChild(task);
-        
-        list.addEventListener('click', function(ev) {
-          if (ev.target.tagName === 'LI') {
-            var i;
-            for (i = 0; i<=4; i++) {
-              document.getElementsByClassName("Block")[i].style.display = "none";
-            }
-            document.getElementById("taskDoc4").style.display = "block";
-          }
-        }, false);
-
-        backBtn.addEventListener('click', mainPage)
-
-        function mainPage() {
-          var i;
-          for (i = 0; i<=4; i++) {
-            document.getElementsByClassName("Block")[i].style.display = "block";
-          }
-          document.getElementById("taskDoc4").style.display = "none";
-        }
-        break;
-      case 5:
-        document.getElementById("myUL5").appendChild(li);
-        document.getElementById("taskDoc5").appendChild(backBtn);
-        document.getElementById("taskDoc5").appendChild(task);
-        
-        list.addEventListener('click', function(ev) {
-          if (ev.target.tagName === 'LI') {
-            var i;
-            for (i = 0; i<=4; i++) {
-              document.getElementsByClassName("Block")[i].style.display = "none";
-            }
-            document.getElementById("taskDoc5").style.display = "block";
-          }
-        }, false);
-
-        backBtn.addEventListener('click', mainPage)
-
-        function mainPage() {
-          var i;
-          for (i = 0; i<=4; i++) {
-            document.getElementsByClassName("Block")[i].style.display = "block";
-          }
-          document.getElementById("taskDoc5").style.display = "none";
-        }
-        break;
-    }
-  }
-  document.getElementById("newTitle").value = "";
-  document.getElementById("newDate").value = "";
-  document.getElementById("newDescr").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
-
-*/

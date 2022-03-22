@@ -1,6 +1,6 @@
 body {
 	background: linear-gradient(180deg,#090979,#1050d6,#00a4ff);
-	height: 1000px;
+	height: 1500px;
 	margin: 0;
 	padding: 0;
 	font-family: Tahoma, Geneva, sans-serif;
@@ -293,11 +293,11 @@ a {
 
 /* Checked */
 .Red input:checked + label:before {
-	border: 2px outset black;
+	border-color: black;
 }
 /* Disabled */
 .Red input:disabled + label:before {
-	border: 2px outset red;
+	border-color: red;
 }
 
 .Green label:before {
@@ -314,11 +314,11 @@ a {
 
 /* Checked */
 .Green input:checked + label:before {
-	border: 2px outset black;
+	border-color: black;
 }
 /* Disabled */
 .Green input:disabled + label:before {
-	border: 2px outset green;
+	border-color: green;
 }
 
 .Yellow label:before {
@@ -335,11 +335,11 @@ a {
 
 /* Checked */
 .Yellow input:checked + label:before {
-	border: 2px outset black;
+	border-color: black;
 }
 /* Disabled */
 .Yellow input:disabled + label:before {
-	border: 2px outset yellow;
+	border-color: yellow;
 }
 
 .Blue label:before {
@@ -356,11 +356,11 @@ a {
 
 /* Checked */
 .Blue input:checked + label:before {
-	border: 2px outset black;
+	border-color: black;
 }
 /* Disabled */
 .Blue input:disabled + label:before {
-	border: 2px outset blue;
+	border-color: blue;
 }
 
 .actBtn {
@@ -421,9 +421,8 @@ a {
 
 /* When clicked on, add a background color and strike out text */
 .Block ul li.checked {
-  	background: #888;
+  	background: #0b8000;
   	color: #fff;
-  	text-decoration: line-through;
 }
 
 /* Add a "checked" mark when clicked on */
@@ -475,7 +474,7 @@ a {
 .taskDescr {
   	position: relative;
   	width: 60%;
-  	font-size: 26px;
+  	font-size: 22px;
 }
 
 .taskDate {
@@ -489,7 +488,7 @@ a {
   	font-size: 40px;
   	transition: 0.4s;
  	position: absolute;
- 	top: -220px;
+ 	top: 20px;
  	transition: 0.4s;
 }
 
@@ -508,21 +507,37 @@ a {
   	border-radius: 15px;
 }
 
-#pass span {
+.passBtn {
+	display: none;
   	position: relative;
   	top: 20px;
   	font-size: 18px;
   	background: #333333;
-  	padding: 5px 10px 5px 10px;
+  	padding: 5px;
+  	width: 30%;
+  	text-align: center;
   	border-radius: 20px;
   	cursor: pointer;
   	transition: 0.4s;
 }
 
-#pass span:hover {
+.passBtn:hover {
 	background-color: #386dff;
 }
 
 #pass input {
   	font-size: 17px;
+}
+
+.tagsForThisTask {
+	display: flex;
+	justify-content: space-around;
+	position: relative;
+	top: 30px;
+}
+
+.tagsForThisTask div {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
 }
