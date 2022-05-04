@@ -118,25 +118,6 @@ window.onclick = function(event) {
 	}
 }
 
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-for (var i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-for (var i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.remove();
-  }
-}
-
 var list = document.getElementsByClassName('taskList');
 var tags = ["red","green","yellow","blue"];
 
@@ -217,6 +198,25 @@ function newElement() {
     task.appendChild(backBtn);
     document.getElementById("Documentation").appendChild(task);
 
+    // Create a "close" button and append it to each list item
+    var myNodelist = document.getElementsByTagName("LI");
+    for (var i = 0; i < myNodelist.length; i++) {
+      var span = document.createElement("SPAN");
+      var txt = document.createTextNode("\u00D7");
+      span.className = "close";
+      span.appendChild(txt);
+      myNodelist[i].appendChild(span);
+    }
+
+    // Click on a close button to hide the current list item
+    var close = document.getElementsByClassName("close");
+    for (var i = 0; i < close.length; i++) {
+      close[i].addEventListener('click', function() {
+        this.parentElement.remove();
+        document.getElementsByClassName(this.parentElement.id)[0].remove();
+      });
+    }
+
     document.getElementById(titleInput + "Pass").style.display = "block";
 
     var searchId;
@@ -257,19 +257,6 @@ function newElement() {
     document.getElementById("newTitle").value = "";
     document.getElementById("newDate").value = "";
     document.getElementById("newDescr").value = "";
-  }
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
   }
 }
 
