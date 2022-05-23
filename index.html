@@ -8,13 +8,15 @@
 </head>
 <body>
 	<div class="MainMenu">
-		<div id="name"><p>New board</p></div>
-		<div id="option">
-			<p id="mainop">Board</p>
-			<ul class="dropdown-content">
-				<div id="firop"><a href="#">Board</a></div>
-				<div id="secop"><a href="#">Calendar</a></div>
-			</ul>
+		<div class="boardOptions">
+			<div id="name">New board</div>
+			<div id="dropdownOption">
+				<div id="mainOption">Board</div>
+				<ul class="dropdownOption-content">
+					<li>Board</li>
+					<li id="last">Calendar</li>
+				</ul>
+			</div>
 		</div>
 		<div class="general">
 			<span id="users">Users</span>
@@ -23,63 +25,65 @@
 			<span id="settings">Settings</span>
 		</div>
 	</div>
-	<div class="Block HelpfulInfo">
-		<div class="Title">
-			<p>Helpful Launch Info</p>
-			<b class="MoreBtn">···</b>
+	<div class="taskBlocks">
+		<div class="Block HelpfulInfo">
+			<div class="Title">
+				<p>Helpful Info</p>
+				<b class="MoreBtn">···</b>
+			</div>
+			<ul id="myUL1" class="taskList"></ul>
+			<div class="AddCard">
+				<span class="Plus" value="1">+</span>
+				<p>Add another card</p>
+			</div>
 		</div>
-		<ul id="myUL1" class="taskList"></ul>
-		<div class="AddCard">
-			<b class="Plus" value="1">+</b>
-			<p>Add another card</p>
-		</div>
-	</div>
 
-	<div class="Block ToDo">
-		<div class="Title">
-			<p>To Do</p>
-			<b class="MoreBtn">···</b>
+		<div class="Block ToDo">
+			<div class="Title">
+				<p>To Do</p>
+				<b class="MoreBtn">···</b>
+			</div>
+			<ul id="myUL2" class="taskList"></ul>
+			<div class="AddCard">
+				<span class="Plus" value="2">+</span>
+				<p>Add another card</p>
+			</div>
 		</div>
-		<ul id="myUL2" class="taskList"></ul>
-		<div class="AddCard">
-			<b class="Plus" value="2">+</b>
-			<p>Add another card</p>
-		</div>
-	</div>
 
-	<div class="Block Progress">
-		<div class="Title">
-			<p>In Progress</p>
-			<b class="MoreBtn">···</b>
+		<div class="Block Progress">
+			<div class="Title">
+				<p>In Progress</p>
+				<b class="MoreBtn">···</b>
+			</div>
+			<ul id="myUL3" class="taskList"></ul>
+			<div class="AddCard">
+				<span class="Plus" value="3">+</span>
+				<p>Add another card</p>
+			</div>
 		</div>
-		<ul id="myUL3" class="taskList"></ul>
-		<div class="AddCard">
-			<b class="Plus" value="3">+</b>
-			<p>Add another card</p>
-		</div>
-	</div>
 
-	<div class="Block Ready">
-		<div class="Title">
-			<p>Ready For Launch</p>
-			<b class="MoreBtn">···</b>
+		<div class="Block Ready">
+			<div class="Title">
+				<p>Ready For Launch</p>
+				<b class="MoreBtn">···</b>
+			</div>
+			<ul id="myUL4" class="taskList"></ul>
+			<div class="AddCard">
+				<span class="Plus" value="4">+</span>
+				<p>Add another card</p>
+			</div>
 		</div>
-		<ul id="myUL4" class="taskList"></ul>
-		<div class="AddCard">
-			<b class="Plus" value="4">+</b>
-			<p>Add another card</p>
-		</div>
-	</div>
 
-	<div class="Block Launched">
-		<div class="Title">
-			<p>Launched</p>
-			<b class="MoreBtn">···</b>
-		</div>
-		<ul id="myUL5" class="taskList"></ul>
-		<div class="AddCard">
-			<b class="Plus" value="5">+</b>
-			<p>Add another card</p>
+		<div class="Block Launched">
+			<div class="Title">
+				<p>Launched</p>
+				<b class="MoreBtn">···</b>
+			</div>
+			<ul id="myUL5" class="taskList"></ul>
+			<div class="AddCard">
+				<span class="Plus" value="5">+</span>
+				<p>Add another card</p>
+			</div>
 		</div>
 	</div>
 	<div id="modalUsers" class="Modal">
@@ -130,13 +134,12 @@
 		    <h2>Settings</h2>
 		    <div>
 		    	<label for="addTag">Add new tag:</label>
-		    	<input type="text" name="addTag" placeholder="Enter a color of tag here" class="Input">
+		    	<input type="color" name="addTag" class="Input">
 		    </div>
 		    <div>
 		    	<label for="changeBack">Change background:</label>
 		    	<input type="color" name="changeBack" class="Input">
 		    </div>
-
 	  	</div>
 	</div>
 	<div id="modalAdd" class="Modal">
@@ -174,12 +177,11 @@
 						<label for="blueinp2"></label>
 					</div>
 		    	</div>
-		    	<span onclick="newElement()" class="actBtn">Add</span>
+		    	<span class="actBtn" id="addElement">Add</span>
 		    </form>
 	  	</div>
 	</div>
 	<div id="Documentation"></div>
 	<script type="text/javascript" src="script.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>

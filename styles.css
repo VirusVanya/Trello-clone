@@ -31,102 +31,107 @@ a {
 }
 
 #name {
-	position: absolute;
-	left: 5%;
-	top: -5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
 }
 
-#option {
-	position: relative;
-	height: 100%;
-	width: 130px;
-	left: 15%;
-	transition: 0.4s;
-	font-size: 24px;
-}
-
-#option p {
+.boardOptions {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 	text-align: center;
 }
 
-.general {
+/*Dropdown for board*/
+
+#dropdownOption {
 	position: relative;
-	height: 80%;
-	width: 40%;
+  	transition: 0.4s;
+	font-size: 24px;
+	width: 130px;
+	height: 70px;
+}
+
+#mainOption {
+  	width: 130px;
+  	height: 70px;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+
+.dropdownOption-content {
+  	display: none;
+  	padding: 0;
+  	margin: 0;
+  	list-style: none;
+  	text-align: center;
+  	flex-direction: column;
+}
+
+#dropdownOption:hover .dropdownOption-content {
+  	display: flex;
+}
+
+.dropdownOption-content li{
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	height: 70px;
+  	background: #333333;
+  	transition: 0.4s;
+}
+
+.dropdownOption-content li:hover {
+  	background-color: #386dff;
+}
+
+#mainOption:hover {
+  	background-color: #386dff;
+}
+
+#last {
+  	border-radius: 10% 10% 15% 15% / 0% 0% 30% 30%;
+}
+
+/*Menu buttons*/
+
+.general {
 	display: flex;
-	top: 10%;
-	justify-content: space-around;
 }
 
 .general span {
-	position: relative;
-  	padding: 10px;
-  	width: 100px;
   	background: #333333;
-  	padding-top: 12px;
-  	float: left;
   	text-align: center;
   	font-size: 24px;
   	cursor: pointer;
   	transition: 0.4s;
-  	border-radius: 40px;
+  	padding: 20px;
 }
 
 .general span:hover {
 	background-color: #386dff;
 }
 
-#mainop {
-	position: relative;
-	top: -5px;
-}
+/*Blocks with tasks*/
 
-.dropdown-content {
-	display: none;
-    position: absolute;
-    text-align: center;
-    flex-direction: column;
-    justify-content: space-around;
-    top: 45px;
-    left: -40px;
-}
-
-#option:hover .dropdown-content {
-	display: block;
-}
-
-.dropdown-content div{
-	position: relative;
-	width: 130px;
-	height: 70px;
-	background: #333333;
-	transition: 0.4s;
-}
-
-.dropdown-content div:hover {
-	background-color: #386dff;
-}
-
-#option:hover {
-	background-color: #386dff;
-}
-
-.dropdown-content a {
-	position: relative;
-	top: 25%;
-}
-
-#secop {
-	border-radius: 10% 10% 15% 15% / 0% 0% 30% 30%;
+.taskBlocks {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	position: absolute;
+	align-items: flex-start;
+	top: 80px;
 }
 
 .Block {
-	position: absolute;
-	width: 19%;
+	width: 300px;
 	background: grey;
 	border-radius: 15px;
-	top: 85px;
-	left: 0.5%;
+	margin: 5px 5px 5px 5px;
 }
 
 .ToDo {
@@ -161,7 +166,7 @@ a {
 	position: relative;
 	top: -15px;
 	left: 10px;
-	font-size: 22px;
+	font-size: 20px;
 }
 
 .AddCard {
@@ -281,6 +286,9 @@ a {
 }
 
 /* Make checkbox with before */
+.Red input {
+	background: red;
+}
 
 .Red label:before {
 	content: " ";
@@ -301,6 +309,10 @@ a {
 /* Disabled */
 .Red input:disabled + label:before {
 	border-color: red;
+}
+
+.Green input {
+	background: green;
 }
 
 .Green label:before {
@@ -324,6 +336,10 @@ a {
 	border-color: green;
 }
 
+.Yellow input {
+	background: yellow;
+}
+
 .Yellow label:before {
 	content: " ";
 	display: inline-block;
@@ -343,6 +359,10 @@ a {
 /* Disabled */
 .Yellow input:disabled + label:before {
 	border-color: yellow;
+}
+
+.Blue input {
+	background: blue;
 }
 
 .Blue label:before {
@@ -469,6 +489,11 @@ a {
   	padding: 0px 30px 30px 30px;
 }
 
+.taskDoc {
+	position: absolute;
+	top: 85px;
+}
+
 .taskTitle {
   	text-align: center;
   	font-size: 40px;
@@ -544,3 +569,9 @@ a {
 	height: 30px;
 	border-radius: 15px;
 }
+
+/*@media screen and (max-width: 1060px) {
+	.general {
+		display: none;
+	}
+}*/
